@@ -24,12 +24,12 @@
         </thead>
         <tbody>
         <tr th:each="art : ${artList}">
-            <td th:text="${art.ID}"></td>
-            <td th:text="${art.Name}"></td>
-            <td th:text="${art.Price}"></td>
+            <td th:text="${art.id}"></td>
+            <td th:text="${art.name}"></td>
+            <td th:text="${art.price}"></td>
             <td>
-                <a th:href="@{'/editArt/' + ${art.ID}}" class="btn btn-primary btn-sm">Edit</a>
-                <a th:href="@{'/delete/' + ${art.ID}}" class="btn btn-danger btn-sm">Delete</a>
+                <a th:href="@{'/editArt/' + ${art.id}}" class="btn btn-primary btn-sm">Edit</a>
+                <a th:href="@{'/delete/' + ${art.id}}" class="btn btn-danger btn-sm">Delete</a>
 
             </td>
         </tr>

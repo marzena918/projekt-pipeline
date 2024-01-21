@@ -14,36 +14,36 @@ import java.util.List;
 @Controller
 public class ArtController {
 
-    private final WoolRepository woolRepository;
+    private final ArtRepository artRepository;
 
-    public ArtController(WoolRepository woolRepository) {
-        this.woolRepository = woolRepository;
+    public ArtController(ArtRepository artRepository) {
+        this.artRepository = artRepository;
     }
 
-    @GetMapping("/artlist")
+    @GetMapping("/artList")
     public String showArtList(Model model) {
-        List<Art> artList = woolRepository.getAll();
+        List<Art> artList = artRepository.findAll();
         model.addAttribute("artList", artList);
-        return "artList"; // Nazwa szablonu Thymeleaf (artList.html)
+        return "artList.html"; // Nazwa szablonu Thymeleaf (artList.html)
     }
     @GetMapping("/editArt/{id}")
     public String editArt(@PathVariable Long id, Model model) {
-        Art art = woolRepository.getById(id);
+        Art art = artRepository.getById(id);
         model.addAttribute("art", art);
         return "editArt"; // Nazwa szablonu Thymeleaf (editArt.html)
     }
 
     @GetMapping("/delete/{id}")
     public String deleteArt(@PathVariable Long id) {
-        woolRepository.deleteArt(id);
-        return "redirect:/artlist";
+        artRepository.deleteById(id);
+        return "redirect:/artList";
 
     }
 
     @PostMapping("/updateArt")
     public String updateArt(@ModelAttribute Art art) {
-        woolRepository.updateArt(art);
-        return "redirect:/artlist"; // Przekierowanie po zaktualizowaniu danych
+        artRepository.saveAndFlush(art);
+        return "redirect:/artList"; // Przekierowanie po zaktualizowaniu danych
     }
 
     @GetMapping ("/newArt")
@@ -56,8 +56,13 @@ public class ArtController {
 
     @PostMapping("/save")
     public String saveArt(@ModelAttribute Art art) {
-        woolRepository.save(art);
-        return "redirect:/artlist"; // Przekierowanie po zaktualizowaniu danych
+        artRepository.saveAndFlush(art);
+        return "redirect:/artList"; // Przekierowanie po zaktualizowaniu danych
+    }
+
+    @GetMapping("/")
+    public String showUserList(Model model) {
+        return showArtList(model);
     }
 
 }

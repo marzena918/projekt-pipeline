@@ -15,21 +15,21 @@
     <h2>Edit Art</h2>
 
     <form th:object="${art}" th:action="@{/updateArt}" method="post">
-        <input type="hidden" th:field="*{ID}" />
+        <input type="hidden" th:field="*{id}" />
 
         <label for="id">ID:</label>
-        <input type="text" id="id" th:field="*{ID}" readonly />
+        <input type="text" id="id" th:field="*{id}" readonly />
 
 <!--        <label for="id">ID:</label>-->
 <!--        <input type="text" id="id" th:value="${art.ID}" readonly />-->
         <br/>
         <!-- Pola do edycji -->
         <label for="name">Name:</label>
-        <input type="text" id="name" th:field="*{Name}" required />
+        <input type="text" id="name" th:field="*{name}" required />
         <br/>
 
         <label for="price">Price:</label>
-        <input type="text" id="price" th:field="*{Price}" required />
+        <input type="text" id="price" th:field="*{price}" required />
         <br/>
 
         <!-- Przycisk do zapisu zmian -->

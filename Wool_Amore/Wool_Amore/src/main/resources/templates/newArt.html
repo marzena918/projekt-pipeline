@@ -17,15 +17,15 @@
     <!-- Formularz do tworzenia nowej encji -->
     <form th:object="${art}" th:action="@{/save}" method="post">
 
-        <input type="hidden" th:field="*{ID}"  />
+        <input type="hidden" th:field="*{id}"  />
         <br/>
 
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" th:field="*{Name}" required />
+        <input type="text" id="name" name="name" th:field="*{name}" required />
         <br/>
 
         <label for="price">Price:</label>
-        <input type="text" id="price" name="price" th:field="*{Price}" required />
+        <input type="text" id="price" name="price" th:field="*{price}" required />
         <br/>
 
         <!-- Przycisk do zapisu nowej encji -->
