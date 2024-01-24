@@ -30,7 +30,7 @@ class ArtControllerTest {
         ArtController artController = new ArtController(artRepository);
         artController.updateArt(art2);
 
-        assertEquals(artRepository.getById(art.getId()), art2);
+        assertEquals(art2, artRepository.getById(art.getId()));
 
     }
 

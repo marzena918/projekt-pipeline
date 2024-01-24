@@ -20,7 +20,7 @@ public class ArtController {
         this.artRepository = artRepository;
     }
 
-    @GetMapping("/artList")
+    @GetMapping("/")
     public String showArtList(Model model) {
         List<Art> artList = artRepository.findAll();
         model.addAttribute("artList", artList);
@@ -36,18 +36,16 @@ public class ArtController {
     @GetMapping("/delete/{id}")
     public String deleteArt(@PathVariable Long id) {
         artRepository.deleteById(id);
-        return "redirect:/artList";
-
+        return "redirect:/";
     }
 
     @PostMapping("/updateArt")
     public String updateArt(@ModelAttribute Art art) {
         artRepository.saveAndFlush(art);
-        return "redirect:/artList"; // Przekierowanie po zaktualizowaniu danych
+        return "redirect:/"; // Przekierowanie po zaktualizowaniu danych
     }
 
     @GetMapping ("/newArt")
-
     public String newArt(Model model) {
         Art art = new Art();
         model.addAttribute("art", art);
@@ -57,12 +55,6 @@ public class ArtController {
     @PostMapping("/save")
     public String saveArt(@ModelAttribute Art art) {
         artRepository.saveAndFlush(art);
-        return "redirect:/artList"; // Przekierowanie po zaktualizowaniu danych
+        return "redirect:/"; // Przekierowanie po zaktualizowaniu danych
     }
-
-    @GetMapping("/")
-    public String showUserList(Model model) {
-        return showArtList(model);
-    }
-
 }
