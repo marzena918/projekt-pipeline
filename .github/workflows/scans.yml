@@ -35,6 +35,7 @@ jobs:
       - uses: axel-op/googlejavaformat-action@v3
         with:
           args: "--skip-sorting-imports --replace"
+          skip-commit: true
 
   depchecktest:
     runs-on: ubuntu-latest
