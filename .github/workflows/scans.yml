@@ -80,3 +80,12 @@ jobs:
           ref: ${{ github.head_ref }}
       - name: trufflehog-actions-scan
         uses: edplato/trufflehog-actions-scan@master
+
+  check-secrets:
+    name: Checking for Secrets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+      - name: Secret Scanner
+        uses: secret-scanner/action@0.0.2
