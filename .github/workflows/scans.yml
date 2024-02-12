@@ -91,21 +91,17 @@ jobs:
         uses: secret-scanner/action@0.0.2
 
   dast:
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-      # Scan Iac with kics
-      - name: Checkmarx DAST Github Action
-        uses: Checkmarx/dast-github-action@v1.0.0-beta
-        env:
-          CX_APIKEY: ${{ secrets.CX_ONE_API_KEY }}
-        with:
-          command: "api"
-          config: 'zap_api_config.yaml'
-          base_url: "localhost.cxast.net"
-          environment_id: "c608a51a-ec4e-4eef-81c4-a0241737efd7"
-          openapi: "swagger.yaml"
-          project_id: "fd093dde-b64a-466f-b2cd-8bf141b4db94"
-          fail_on: "HIGH"
-          verbose: true
+    - name: Checking for Secrets
+      runs-on: ubuntu-latest
+      steps:
+        - name: ZAP scan
+          run: script/zap-script.sh
+
+        - name: Archive production artifacts
+          uses: actions/upload-artifact@v2
+          with:
+            name: zap report
+            path: |
+              ./zap_baseline_report.html
+
+
