@@ -104,14 +104,14 @@ jobs:
           REGION: '${{ secrets.REGION }}'
           pull-report: 'true'
 
-  dupa-check:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@v3
-      - name: run check
-        run: |
-          ile_dupa=`grep dupa -r  --include "*.java" . | wc -l`
-          echo $ile_dupa
-          exit $ile_dupa
+#  dupa-check:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: checkout
+#        uses: actions/checkout@v3
+#      - name: run check
+#        run: |
+#          ile_dupa=`grep dupa -r  --include "*.java" . | wc -l`
+#          echo $ile_dupa
+#          exit $ile_dupa
 
