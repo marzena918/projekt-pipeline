@@ -107,9 +107,9 @@ jobs:
   dupa-check:
     runs-on: ubuntu-latest
     steps:
-      - name: check for dupa
+      - name: checkout
         uses: actions/checkout@v3
-
+      - name: run check
         run: |
           ile_dupa = `grep dupa -r -c .`
           return $ile_dupa
