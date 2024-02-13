@@ -31,7 +31,6 @@ class ArtControllerTest {
         artController.updateArt(art2);
 
         assertEquals(art2, artRepository.getById(art.getId()));
-        System.out.println("dupa");
     }
 
     @Test
