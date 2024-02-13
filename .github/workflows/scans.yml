@@ -113,5 +113,5 @@ jobs:
         run: |
           ile_dupa=`grep dupa -r  --include "*.java" . | wc -l`
           echo $ile_dupa
-          return $ile_dupa
+          exit $ile_dupa
 
